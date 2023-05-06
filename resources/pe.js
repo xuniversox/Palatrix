@@ -11,7 +11,7 @@ window.onload = function () {
   var ColorPicker = document.getElementById("ColorPicker");
   var ColorChoice = document.getElementById("ColorPicker").value;
   var ColorBox = document.getElementsByClassName("ColorBox");
-  var RGB_Regex = /\d+/g;
+  var RGB_Regex = /(\d+\s){2}\d+/g;
 
   let ColorPicked = new Map([["ColorPicked", "#000000"]]);
 
@@ -55,21 +55,31 @@ window.onload = function () {
   document.addEventListener("keydown", function (event) {
     if (event.code == "Space") {
       console.log("Pressed Space");
-      var text = "";
-      var FormatText = "";
-      var RGB_Index = 0;
-      for (let i = 0; i < ColorBox.length; i++) {
-        RGB_Index += 1;
-        text += ColorBox[i].style.backgroundColor + "\n";
-
-        FormatText = text.match(RGB_Regex);
-        console.log(typeof FormatText);
-        if (RGB_Index % 3 == 0) {
-        }
+      var ColorBoxes = document.querySelectorAll(".ColorBox");
+      var ColorFormat = "";
+      var ColorNumber = 0;
+      var i = 0;
+      if (i == 0) {
+        ColorFormat += "JASC-PAL" + "\n";
+        ColorFormat += "0100" + "\n";
       }
-      console.log(FormatText);
-      var filename = "my-file.txt";
-      var blob = new Blob([FormatText], { type: "text/plain" });
+
+      for (ColorNumber = 0; ColorNumber < ColorBoxes.length; ColorNumber++);
+
+      ColorFormat += String(ColorNumber - 1) + "\n";
+
+      for (i = 0; i < ColorBoxes.length; i++) {
+        var ColorBox = ColorBoxes[i];
+        var RGBValue = ColorBox.style.backgroundColor.match(/\d+/g);
+        ColorFormat += RGBValue.join(" ") + "\n";
+      }
+      /*   if (ColorBoxes.length) {
+        ColorFormat += String(i - 1) + "\n";
+      }
+ */
+      console.log(ColorFormat);
+      var filename = "my-file.pal";
+      var blob = new Blob([ColorFormat], { type: "text/plain" });
       var link = document.createElement("a");
       link.href = URL.createObjectURL(blob);
       link.download = filename;
