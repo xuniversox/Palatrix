@@ -42,14 +42,15 @@ header {
   border: 2px solid rgb(52, 131, 49);
   margin: 2px;
   width: auto;
-  height: auto;
+  height: 40px;
   font-size: 88%;
 }
 
 main {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: min-content repeat(1, 1fr);
+  grid-template-rows: min-content repeat(3, 1fr);
+  padding: 2px;
   /*  display: flex;
     justify-content: center;
     align-items: center;
@@ -60,16 +61,16 @@ main {
   /* height: 68vh; */
   height: auto;
   width: auto;
-  margin: 2px;
 }
 
 #Palatrix-Panel {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: min-content repeat(1, 1fr);
+  grid-template-rows: repeat(2, 1fr);
 
   background: pink;
   margin: 2px;
+
   border: 2px solid rgb(187, 86, 86);
   height: auto;
   width: auto;
@@ -168,4 +169,41 @@ p {
   background-color: rgb(58, 58, 58);
 
   border: 2px solid rgb(121, 121, 121);
+}
+
+#PaletteFormat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: blue;
+  border: 2px solid black;
+  color: white;
+  width: auto;
+  height: auto;
+  padding: 2px;
+}
+
+option {
+  color: pink;
+  text-align: center;
+}
+
+option:hover {
+  color: black;
+}
+
+option['PAL'] {
+  color: red;
+}
+
+select {
+  background-color: pink;
+  border: 2px dashed orange;
+  color: blue;
+  padding: 2px 2px;
+}
+
+select:hover {
+  background-color: pink;
+  color: black;
 }

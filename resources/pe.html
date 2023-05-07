@@ -10,10 +10,10 @@
       <link rel="stylesheet" href="pe.css" />
     </head>
     <body>
-      <header>
-        <h1>Palatrix</h1>
-      </header>
       <main>
+        <header>
+          <h1>Palatrix</h1>
+        </header>
         <section id="Palatrix-Panel">
           <article class="ColorBox"></article>
           <article class="ColorBox"></article>
@@ -39,9 +39,16 @@
             <ul id="Palette-List"></ul>
           </article>
         </section>
+        <section id="Palette-Splash">
+          <label for="PaletteFormat"> Your Export Palette Format </label>
+          <select id="PaletteFormatSelector">
+            <option value="PAL">PAL</option>
+            <option value="GPL">GPL</option>
+            <option value="HEX">HEX</option>
+            <option value="TXT">TXT</option>
+          </select>
+        </section>
       </main>
-
-      <section id="Palette-Splash"></section>
 
       <script src="pe.js"></script>
     </body>
