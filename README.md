@@ -1,6 +1,7 @@
 ## PALATRIX
 #### Aesthetic Pixel Palette Editor
-![2023-05-07 03 52 57 127 0 0 1 1fd82b65ecde](https://user-images.githubusercontent.com/67387763/236655296-46cf2432-a2f6-4f1a-988a-c8bae90337f7.png)
+![2023-05-09 02 19 32 127 0 0 1 7b5452d350eb](https://user-images.githubusercontent.com/67387763/236969983-660e0e7b-3a67-46f0-bbda-ed9adfbc65eb.png)
+
 
 
 
