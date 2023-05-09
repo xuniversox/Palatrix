@@ -10,7 +10,6 @@ body {
   padding: 0px;
   background-color: darkred;
   text-align: center;
-  overflow: hidden;
 }
 
 h1,
@@ -20,11 +19,11 @@ h4,
 h5,
 h6 {
   margin: 0;
+  text-shadow: 1px 1px black;
 }
 
 #Page {
   display: grid;
-
   background-color: rgb(202, 157, 74);
   border: 2px solid rgb(128, 128, 0);
   width: auto;
@@ -36,7 +35,6 @@ header {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
   background-color: mediumpurple;
   color: purple;
   border: 2px solid rgb(52, 131, 49);
@@ -51,10 +49,6 @@ main {
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: min-content repeat(3, 1fr);
   padding: 2px;
-  /*  display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column; */
   background-color: rgb(83, 20, 255);
   border: 2px dashed goldenrod;
 
@@ -64,24 +58,59 @@ main {
 }
 
 #Palatrix-Panel {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-
-  background: pink;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: purple;
   margin: 2px;
-
   border: 2px solid rgb(187, 86, 86);
   height: auto;
   width: auto;
 }
 
+:root {
+  /* --Grid-Column-Amount: 16;
+  --Grid-Row-Amount: 1; */
+  /* --Display-Type: inline-grid;
+  --ColorBox-Width: 32px;
+  --ColorBox-Height: 32px; */
+  /* 16x16 square pixels in viewport units*/
+  /* --ColorBox-Width: 12vw;
+  --ColorBox-Height: 12vh; */
+  /*  --ColorBox-Width: 0.84vw;
+  --ColorBox-Height: 0.87vh; */
+  --Display-Type: grid;
+  --Justify: center;
+  --Align: center;
+  --Grid-Column-Amount: 8;
+  --Grid-Row-Amount: 2;
+  --ColorBox-Width: 100%;
+  --ColorBox-Height: 100%;
+  --Palette-Height: 100%;
+  --Palette-Width: 100%;
+  /* SET TO 100% ON BOTH COLORBOX AND PALATRIX-PALETTE
+  FOR FULL RESIZING SQUARES ALSO SET COLUMN AND ROW AMOUNT
+  
+  SET PALETTE TO AUTO AND COLORBOX TO PALETTE PIXEL SIZE FOR PNG EXPORT*/
+}
+#Palatrix-Palette {
+  display: var(--Display-Type);
+  grid-template-columns: repeat(var(--Grid-Column-Amount), 1fr);
+  grid-template-rows: repeat(var(--Grid-Row-Amount), 1fr);
+  justify-content: var(--Justify);
+  align-items: var(--Align);
+  background-color: firebrick;
+
+  width: var(--Palette-Width);
+  height: var(--Palette-Height);
+}
+
 .ColorBox {
-  min-height: 2vh;
-  width: auto;
-  height: auto;
-  margin: 2px;
-  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--ColorBox-Width);
+  height: var(--ColorBox-Height);
 }
 
 ul {
@@ -107,20 +136,6 @@ p {
   height: auto;
 }
 
-#Palette-List {
-  background-color: pink;
-  border: 1px dotted purple;
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(1, 1fr);
-  text-align: center;
-
-  width: auto;
-  height: auto;
-}
-
 .Palette {
   background-color: lightslategray;
   border: 2px dashed lightsteelblue;
@@ -134,26 +149,23 @@ p {
 
 #Palette-Selector {
   display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(1, 1fr);
   justify-content: center;
   align-items: center;
-  background-color: rgb(255, 0, 183);
-
+  background-color: rgb(95, 98, 104);
   border: 2px dotted brown;
   width: auto;
   height: auto;
-  margin-top: 12px;
-  margin-left: 4px;
-  margin-right: 4px;
-  padding: 2px;
+  padding: auto;
+  margin: auto;
 }
 #Palette-Splash {
   display: grid;
   justify-content: center;
   align-items: center;
   background-color: rgb(0, 183, 255);
-
   border: 2px dotted brown;
-
   width: auto;
   height: auto;
 }
@@ -167,7 +179,6 @@ p {
   width: auto;
   height: auto;
   background-color: rgb(58, 58, 58);
-
   border: 2px solid rgb(121, 121, 121);
 }
 
@@ -192,7 +203,7 @@ option:hover {
   color: black;
 }
 
-option['PAL'] {
+option {
   color: red;
 }
 

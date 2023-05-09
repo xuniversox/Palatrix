@@ -8,6 +8,8 @@
 
       <title>Palatrix</title>
       <link rel="stylesheet" href="pe.css" />
+      <script src="/node_modules/html-to-image/dist/html-to-image.js"></script>
+      <script src="/node_modules/downloadjs/download.min.js"></script>
     </head>
     <body>
       <main>
@@ -15,38 +17,41 @@
           <h1>Palatrix</h1>
         </header>
         <section id="Palatrix-Panel">
-          <article class="ColorBox"></article>
-          <article class="ColorBox"></article>
-          <article class="ColorBox"></article>
-          <article class="ColorBox"></article>
-          <article class="ColorBox"></article>
-          <article class="ColorBox"></article>
-          <article class="ColorBox"></article>
-          <article class="ColorBox"></article>
-          <article class="ColorBox"></article>
-          <article class="ColorBox"></article>
-          <article class="ColorBox"></article>
-          <article class="ColorBox"></article>
-          <article class="ColorBox"></article>
-          <article class="ColorBox"></article>
-          <article class="ColorBox"></article>
-          <article class="ColorBox"></article>
+          <div id="Palatrix-Palette">
+            <article class="ColorBox"></article>
+            <article class="ColorBox"></article>
+            <article class="ColorBox"></article>
+            <article class="ColorBox"></article>
+            <article class="ColorBox"></article>
+            <article class="ColorBox"></article>
+            <article class="ColorBox"></article>
+            <article class="ColorBox"></article>
+            <article class="ColorBox"></article>
+            <article class="ColorBox"></article>
+            <article class="ColorBox"></article>
+            <article class="ColorBox"></article>
+            <article class="ColorBox"></article>
+            <article class="ColorBox"></article>
+            <article class="ColorBox"></article>
+            <article class="ColorBox"></article>
+          </div>
         </section>
 
         <section id="Palatrix-Control">
           <input type="Color" name="ColorChoice" id="ColorPicker" />
-          <article id="Palette-Selector">
-            <ul id="Palette-List"></ul>
-          </article>
+          <article id="Palette-Selector"></article>
         </section>
         <section id="Palette-Splash">
+          <article id="Palette-Image-Viewer"></article>
           <label for="PaletteFormat"> Your Export Palette Format </label>
           <select id="PaletteFormatSelector">
             <option value="PAL">PAL</option>
+            <option value="PNG">PNG</option>
             <option value="GPL">GPL</option>
             <option value="HEX">HEX</option>
             <option value="TXT">TXT</option>
           </select>
+          <select name="" id="PNG_Size_Option_Selector"></select>
         </section>
       </main>
 

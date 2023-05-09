@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pixel to Viewport Converter</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: gray;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      input {
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <label for="pxWidth">Pixel Width:</label>
+      <input type="number" id="pxWidth" name="pxWidth" />
+
+      <label for="pxHeight">Pixel Height:</label>
+      <input type="number" id="pxHeight" name="pxHeight" />
+
+      <button type="button" id="convertBtn">Convert</button>
+
+      <label for="vwWidth">Viewport Width (vw):</label>
+      <input type="text" id="vwWidth" name="vwWidth" readonly />
+
+      <label for="vwHeight">Viewport Height (vh):</label>
+      <input type="text" id="vwHeight" name="vwHeight" readonly />
+    </form>
+
+    <script>
+      document
+        .getElementById("convertBtn")
+        .addEventListener("click", function () {
+          const pxWidth = parseFloat(document.getElementById("pxWidth").value);
+          const pxHeight = parseFloat(
+            document.getElementById("pxHeight").value
+          );
+
+          const vwWidth = (pxWidth / window.innerWidth) * 100;
+          const vwHeight = (pxHeight / window.innerHeight) * 100;
+
+          document.getElementById("vwWidth").value = vwWidth.toFixed(2);
+          document.getElementById("vwHeight").value = vwHeight.toFixed(2);
+        });
+    </script>
+  </body>
+</html>
