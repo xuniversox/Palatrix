@@ -39,19 +39,55 @@
 
         <section id="Palatrix-Control">
           <input type="Color" name="ColorChoice" id="ColorPicker" />
-          <article id="Palette-Selector"></article>
         </section>
         <section id="Palette-Splash">
-          <article id="Palette-Image-Viewer"></article>
-          <label for="PaletteFormat"> Your Export Palette Format </label>
-          <select id="PaletteFormatSelector">
-            <option value="PAL">PAL</option>
-            <option value="PNG">PNG</option>
-            <option value="GPL">GPL</option>
-            <option value="HEX">HEX</option>
-            <option value="TXT">TXT</option>
-          </select>
+          <article id="Palette-Selector"></article>
           <select name="" id="PNG_Size_Option_Selector"></select>
+
+          <div class="Palette-Radio-Options">
+            <input
+              type="radio"
+              id="PAL"
+              name="palette-format-type"
+              value="PAL"
+            />
+            <label for="PAL">PAL</label>
+            <input
+              type="radio"
+              id="PNG"
+              name="palette-format-type"
+              value="PNG"
+            />
+            <label for="PNG">PNG</label>
+            <input
+              type="radio"
+              id="GPL"
+              name="palette-format-type"
+              value="GPL"
+            />
+            <label for="GPL">GPL</label>
+            <input
+              type="radio"
+              id="HEX"
+              name="palette-format-type"
+              value="HEX"
+            />
+            <label for="HEX">HEX</label>
+            <input
+              type="radio"
+              id="TXT"
+              name="palette-format-type"
+              value="TXT"
+            />
+            <label for="TXT">TXT</label>
+            <input
+              type="radio"
+              id="BIN"
+              name="palette-format-type"
+              value="BIN"
+            />
+            <label for="BIN">BIN</label>
+          </div>
         </section>
       </main>
 

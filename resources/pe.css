@@ -1,15 +1,27 @@
+/* Set a default font size */
+
 input[type="color"]::-webkit-color-swatch-wrapper {
-  padding: 0;
 }
+
 input[type="color"]::-webkit-color-swatch {
   border: none;
 }
 
+input[type="radio"] {
+  display: none;
+}
+
+img {
+  border: 2px solid black;
+  width: auto;
+  height: auto;
+}
 body {
-  margin: 4pxs;
-  padding: 0px;
+  margin: 2px;
+  padding: 2px;
   background-color: darkred;
   text-align: center;
+  overflow: hidden;
 }
 
 h1,
@@ -62,7 +74,6 @@ main {
   justify-content: center;
   align-items: center;
   background: purple;
-  margin: 2px;
   border: 2px solid rgb(187, 86, 86);
   height: auto;
   width: auto;
@@ -86,6 +97,7 @@ main {
   --Grid-Row-Amount: 2;
   --ColorBox-Width: 100%;
   --ColorBox-Height: 100%;
+  --ColorBox-Margin: auto;
   --Palette-Height: 100%;
   --Palette-Width: 100%;
   /* SET TO 100% ON BOTH COLORBOX AND PALATRIX-PALETTE
@@ -99,18 +111,22 @@ main {
   grid-template-rows: repeat(var(--Grid-Row-Amount), 1fr);
   justify-content: var(--Justify);
   align-items: var(--Align);
-  background-color: firebrick;
+  background-color: rgb(45, 44, 46);
 
   width: var(--Palette-Width);
   height: var(--Palette-Height);
 }
 
 .ColorBox {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: var(--ColorBox-Width);
   height: var(--ColorBox-Height);
+}
+
+.ColorBox:hover {
+  width: var(--ColorBox-Width);
+  height: var(--ColorBox-Height);
+
+  filter: brightness(1.2);
 }
 
 ul {
@@ -126,14 +142,13 @@ p {
 
 #Palatrix-Control {
   display: grid;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  background-color: rgb(150, 243, 155);
-  border: 2px dotted brown;
+  grid-template-rows: repeat(1, 1fr);
+
+  margin: 0 auto;
   width: auto;
-  height: auto;
 }
 
 .Palette {
@@ -149,35 +164,88 @@ p {
 
 #Palette-Selector {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(1, 1fr);
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(95, 98, 104);
-  border: 2px dotted brown;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+
+  border: 2px solid rgb(57, 36, 54);
+
+  height: 80%;
   width: auto;
-  height: auto;
-  padding: auto;
-  margin: auto;
+
+  background-color: rgb(139, 99, 151);
 }
+
 #Palette-Splash {
   display: grid;
   justify-content: center;
   align-items: center;
-  background-color: rgb(0, 183, 255);
-  border: 2px dotted brown;
+  background-color: #553592;
+  border: 2px dashed #5e5079;
+  text-align: center;
   width: auto;
   height: auto;
 }
 
-#ColorPicker {
+.Palette-Radio-Options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  background: linear-gradient(rgb(84, 32, 124), rgb(87, 62, 90));
+  border: 2px solid black;
+  color: pink;
+  width: 82vw;
+  height: 6vh;
+  font-size: 2vh;
+}
+.Palette-Radio-Options label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #6b3d5e;
+  cursor: pointer;
   position: relative;
-  margin-top: 16px;
-  margin-left: 2px;
-  margin-right: 2px;
+  background-color: #754881;
+  width: 4vw;
+  height: 4vh;
+  margin: 0 0.5vw;
+  flex: 1;
+}
+
+.Palette-Radio-Options label:hover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 4px solid #4a2941;
+  cursor: pointer;
+  position: relative;
+  background-color: #3b2043;
+  width: 4vw;
+  height: 4vh;
+  margin: 0 0.5vw;
+  flex: 1;
+}
+input[type="radio"]:checked + label,
+.Palette-Radio-Options input[type="radio"]:checked {
+  border: 2px solid #6b3d5e;
+  cursor: pointer;
+  position: relative;
+  background-color: #9d72a9;
+  width: 4vw;
+  height: 4vh;
+  margin: 0 0.5vw;
+  flex: 1;
+}
+
+#ColorPicker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
   padding: 2px;
-  width: auto;
-  height: auto;
+  width: 80vw;
+  height: 24vh;
   background-color: rgb(58, 58, 58);
   border: 2px solid rgb(121, 121, 121);
 }
@@ -192,29 +260,4 @@ p {
   width: auto;
   height: auto;
   padding: 2px;
-}
-
-option {
-  color: pink;
-  text-align: center;
-}
-
-option:hover {
-  color: black;
-}
-
-option {
-  color: red;
-}
-
-select {
-  background-color: pink;
-  border: 2px dashed orange;
-  color: blue;
-  padding: 2px 2px;
-}
-
-select:hover {
-  background-color: pink;
-  color: black;
 }

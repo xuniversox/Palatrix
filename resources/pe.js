@@ -45,6 +45,14 @@ window.onload = function () {
     return r + g + b;
   }
 
+  function RGB_BIN(rgb) {
+    let binary = "";
+    binary += rgb[0].toString(2).padStart(8, "0");
+    binary += rgb[1].toString(2).padStart(8, "0");
+    binary += rgb[2].toString(2).padStart(8, "0");
+    return binary;
+  }
+
   for (let i = 0; i < ColorBox.length; i++) {
     ColorBox[i].style.backgroundColor = RGB_Random();
 
@@ -78,18 +86,21 @@ window.onload = function () {
 
   document.addEventListener("keydown", function (event) {
     if (event.code == "Space") {
-      var PaletteFormatSelector = document.getElementById(
-        "PaletteFormatSelector"
+      const options = document.querySelectorAll(
+        'input[name="palette-format-type"]'
       );
-      console.log(PaletteFormatSelector);
+      let selectedOption;
 
-      var PaletteFormatOption =
-        PaletteFormatSelector.options[PaletteFormatSelector.selectedIndex];
-      var PaletteFormatOptionText = PaletteFormatOption.text;
+      for (const option of options) {
+        if (option.checked) {
+          selectedOption = option.value;
+        }
+      }
 
-      console.log(PaletteFormatOptionText);
+      console.log(selectedOption);
+
       console.log("Pressed Space");
-      if (PaletteFormatOptionText == "PNG") {
+      if (selectedOption == "PNG") {
         var PalatrixPalette = document.getElementById("Palatrix-Palette");
         root.style.setProperty("--Grid-Row-Amount", 1);
         root.style.setProperty("--Grid-Column-Amount", 16);
@@ -173,7 +184,7 @@ window.onload = function () {
             console.error("oops, something went wrong!", error);
           });
       }
-      if (PaletteFormatOptionText == "PAL") {
+      if (selectedOption == "PAL") {
         var PNG_Size_Option_Selector = document.getElementById(
           "PNG_Size_Option_Selector"
         );
@@ -216,7 +227,7 @@ window.onload = function () {
       }
 
       //GIMP-PAL
-      if (PaletteFormatOptionText == "GPL") {
+      if (selectedOption == "GPL") {
         var PNG_Size_Option_Selector = document.getElementById(
           "PNG_Size_Option_Selector"
         );
@@ -266,7 +277,7 @@ window.onload = function () {
       //////END OF GIMP PAL
 
       //TXT-PAL
-      if (PaletteFormatOptionText == "TXT") {
+      if (selectedOption == "TXT") {
         var PNG_Size_Option_Selector = document.getElementById(
           "PNG_Size_Option_Selector"
         );
@@ -315,7 +326,7 @@ window.onload = function () {
       //////END OF TXT PAL
 
       //HEX-PAL
-      if (PaletteFormatOptionText == "HEX") {
+      if (selectedOption == "HEX") {
         var PNG_Size_Option_Selector = document.getElementById(
           "PNG_Size_Option_Selector"
         );
@@ -352,7 +363,71 @@ window.onload = function () {
       }
       //////END OF HEX PAL
 
+      //BIN-PAL
+      if (selectedOption == "BIN") {
+        var PNG_Size_Option_Selector = document.getElementById(
+          "PNG_Size_Option_Selector"
+        );
+
+        PNG_Size_Option_Selector.style.display = "none";
+        root.style.setProperty("--Grid-Row-Amount", 2);
+        root.style.setProperty("--Grid-Column-Amount", 8);
+        root.style.setProperty("--ColorBox-Width", 100 + "%");
+        root.style.setProperty("--ColorBox-Height", 100 + "%");
+        root.style.setProperty("--Palette-Width", 100 + "%");
+        root.style.setProperty("--Palette-Height", 100 + "%");
+        var ColorBoxes = document.querySelectorAll(".ColorBox");
+        var ColorFormat = "";
+        var ColorNumber = 0;
+        var PaletteName = "DEFAULT";
+
+        for (var i = 0; i < ColorBoxes.length; i++) {
+          var ColorBox = ColorBoxes[i];
+          var RGBValue = ColorBox.style.backgroundColor.match(/\d+/g);
+
+          if (i % 1 == 0) {
+            ColorFormat += RGB_BIN(RGBValue);
+          }
+          ColorFormat += "\n";
+        }
+        console.log(ColorFormat);
+        var filename = "my-file.bin";
+        var blob = new Blob([ColorFormat], { type: "text/plain" });
+        var link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = filename;
+        link.click();
+        console.log("Key pressed:", event.key);
+      }
+      //////END OF HEX PAL
+
       //END OF SPACE
     }
   });
+
+  var imageContainer = document.getElementById("Palette-Selector");
+
+  fetch("palette")
+    .then((response) => response.text())
+    .then((data) => {
+      var parser = new DOMParser();
+      var html = parser.parseFromString(data, "text/html");
+      var links = Array.from(
+        html.querySelectorAll(
+          "a[href$='.jpg'], a[href$='.jpeg'], a[href$='.png'], a[href$='.gif']"
+        )
+      );
+      links.forEach((link) => {
+        console.log(link.textContent);
+        var img = document.createElement("img");
+
+        img.src = `palette/${link.textContent}`;
+        console.log((img.src = `palette/${link.textContent}`));
+        img.width = 200; // Set the width to 200 pixels
+        img.height = 200; // Set the height to 200 pixels
+        imageContainer.appendChild(img);
+        console.log(img);
+      });
+    })
+    .catch((error) => console.log(error));
 };
